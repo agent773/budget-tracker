@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+alembic
+plaid-python
+passlib[argon2]
+python-jose[cryptography]
+cryptography
+python-dotenv
+apscheduler
+pydantic-settings
+python-multipart
+pytest
+httpx
+pydantic

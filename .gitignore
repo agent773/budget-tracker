@@ -1,0 +1,124 @@
+# Secrets & environment
+.env
+.env.local
+
+# Database
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# TLS certs/keys
+certs/*.pem
+certs/*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Pseudocode-only stub files ---
+# These have no real implementation yet, just comments describing intent.
+# .gitignore only matches paths, not content -- as you implement each file for
+# real, DELETE its line below so git starts tracking it (don't just leave it
+# ignored, or your finished work silently won't get committed).
+backend/alembic.ini
+backend/app/main.py
+backend/app/dependencies.py
+backend/app/models/__init__.py
+backend/app/models/account.py
+backend/app/models/plaid_item.py
+backend/app/models/transaction.py
+backend/app/models/category.py
+backend/app/models/budget.py
+backend/app/models/manual_entry.py
+backend/app/models/holding.py
+backend/app/models/categorization_rule.py
+backend/app/schemas/auth_schema.py
+backend/app/schemas/plaid_schema.py
+backend/app/schemas/account_schema.py
+backend/app/schemas/transaction_schema.py
+backend/app/schemas/budget_schema.py
+backend/app/schemas/category_schema.py
+backend/app/schemas/manual_schema.py
+backend/app/schemas/dashboard_schema.py
+backend/app/routers/plaid_router.py
+backend/app/routers/accounts_router.py
+backend/app/routers/transactions_router.py
+backend/app/routers/budgets_router.py
+backend/app/routers/categories_router.py
+backend/app/routers/manual_router.py
+backend/app/routers/dashboard_router.py
+backend/app/services/plaid_service.py
+backend/app/services/sync_service.py
+backend/app/services/categorization_service.py
+backend/app/services/recurring_service.py
+backend/app/services/alert_service.py
+backend/app/services/csv_import_service.py
+backend/app/services/networth_service.py
+backend/app/security/encryption.py
+backend/app/security/rate_limiter.py
+backend/app/jobs/scheduler.py
+backend/app/utils/money.py
+backend/app/utils/timezones.py
+backend/migrations/env.py
+backend/migrations/versions/0001_initial_schema.py
+backend/tests/conftest.py
+backend/tests/test_auth.py
+backend/tests/test_plaid_flow.py
+backend/tests/test_transactions.py
+backend/tests/test_budgets.py
+backend/tests/test_encryption.py
+backend/tests/test_csv_import.py
+certs/gen_cert.sh
+frontend/vite.config.ts
+frontend/index.html
+frontend/src/main.tsx
+frontend/src/App.tsx
+frontend/src/theme.css
+frontend/src/api/client.ts
+frontend/src/api/authApi.ts
+frontend/src/api/plaidApi.ts
+frontend/src/api/accountsApi.ts
+frontend/src/api/transactionsApi.ts
+frontend/src/api/budgetsApi.ts
+frontend/src/api/manualApi.ts
+frontend/src/api/dashboardApi.ts
+frontend/src/api/categoriesApi.ts
+frontend/src/state/authContext.tsx
+frontend/src/state/accountsStore.ts
+frontend/src/state/themeContext.tsx
+frontend/src/pages/LoginPage.tsx
+frontend/src/pages/DashboardPage.tsx
+frontend/src/pages/AccountsPage.tsx
+frontend/src/pages/TransactionsPage.tsx
+frontend/src/pages/BudgetsPage.tsx
+frontend/src/pages/ManualEntryPage.tsx
+frontend/src/pages/CsvImportPage.tsx
+frontend/src/pages/SettingsPage.tsx
+frontend/src/components/PlaidLinkButton.tsx
+frontend/src/components/NetWorthChart.tsx
+frontend/src/components/SpendingPieChart.tsx
+frontend/src/components/BudgetProgressBar.tsx
+frontend/src/components/TransactionTable.tsx
+frontend/src/components/AlertBanner.tsx
+frontend/src/components/AccountCard.tsx
+frontend/src/components/NavBar.tsx
+frontend/src/hooks/useAuth.ts
+frontend/src/hooks/useFetch.ts
+frontend/tests/TransactionTable.test.tsx
+frontend/tests/authFlow.test.tsx
+docs

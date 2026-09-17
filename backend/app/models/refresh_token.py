@@ -10,11 +10,9 @@
 # token_hash -- never query by the raw token itself (same idea as passwords:
 # if the DB leaks, raw tokens leaking would let someone impersonate any session).
 
-
+from app.config import settings
 from datetime import datetime, timedelta
-
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
-
 from app.database import Base
 
 
@@ -26,4 +24,4 @@ class RefreshToken(Base):
     token_hash = Column(String, nullable=False)
     revoked = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
-    expires_at = Column(DateTime, default=lambda: datetime.utcnow() + timedelta(days=7))
+    expires_at = Column(DateTime, default=lambda: datetime.utcnow() + timedelta(days=settings.JWT_REFRESH_EXPIRE_DAYS))

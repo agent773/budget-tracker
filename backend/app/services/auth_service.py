@@ -26,11 +26,11 @@ def register(email: str, password: str, db):
     return new_user
 
 
-def login(email: str, password: str, db) -> str:
+def login(email: str, password: str, db) -> tuple[str, int]:
     user = db.query(User).filter_by(email=email).first()
     if user is None or not password_hasher.verify(password, user.password_hash):
         raise HTTPException(status_code=401, detail="Invalid email or password")
-    return jwt_handler.create_access_token(sub=user.id)
+    return jwt_handler.create_access_token(sub=user.id), user.id
 
 
 def create_refresh_token(user_id: int,db):
@@ -42,7 +42,7 @@ def create_refresh_token(user_id: int,db):
     db.refresh(new_refresh_token)
     return token
 
-def verify_refresh_token(token_hash,db):
+def verify_refresh_token(token_hash: str ,db):
     token = db.query(RefreshToken).filter_by(token_hash=token_hash).first()
     if token is None:
         return (None,False)
@@ -50,7 +50,7 @@ def verify_refresh_token(token_hash,db):
         return (token.user_id,True)
     return (token.user_id,False)
 
-def revoke_refresh_token(token_hash: int,db):
+def revoke_refresh_token(token_hash: str ,db):
     token = db.query(RefreshToken).filter_by(token_hash=token_hash).first()
     if token is None:
         return None

@@ -6,26 +6,31 @@
 # rate_limit_login(request): 429 if this IP has exceeded the login attempt limit
 # (security/rate_limiter.py).
 from fastapi import Depends, HTTPException, status, Request
-from fastapi.responses import JSONResponse
-from fastapi.status import HTTP_429_TOO_MANY_REQUESTS
+from fastapi.security import HTTPBearer,HTTPAuthorizationCredentials
 from typing import Annotated
-from security.jwt_handler import decode
+from app.security.jwt_handler import decode
+from app.models.user import User
+from sqlalchemy.orm import Session
+from app.database import get_db
 import time
 
+ringbear = HTTPBearer()
 
-def get_current_user(token: Annotated[str, Depends]):
-    user = decode(token)
-    if not user:
+def get_current_user(token: Annotated[HTTPAuthorizationCredentials, Depends(ringbear)],db: Session = Depends(get_db)):
+    #payload = decode(token)
+    token = creds.credentials
+    user_can = db.query(User).get(int(token))
+    if not user_can:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated",
             headers={"WWW-Authenticate": "Bearer"},
             )
-    return user
+    return user_can
 
 request_counts = {}
 
-async def rate_limit_login(request:Request, call_next):
+async def rate_limit_login(request:Request):
     client_ip = request.client.host
     now = time.time()
     window = 60  # seconds
@@ -35,11 +40,6 @@ async def rate_limit_login(request:Request, call_next):
     timestamps = [t for t in timestamps if now - t < window]
     
     if len(timestamps) >= max_requests:
-        return JSONResponse(
-            status_code=HTTP_429_TOO_MANY_REQUESTS,
-            content={"detail": "Too many requests"}
-            )
+        raise HTTPException(status_code=429,detail = "Too many requests, Gotta go Fast is not a health condition")
     timestamps.append(now)
     request_counts[client_ip] = timestamps
-    return await call_next(request) 
-    

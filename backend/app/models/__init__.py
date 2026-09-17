@@ -13,5 +13,5 @@
 # FROM .holding IMPORT Holding
 # FROM .categorization_rule IMPORT CategorizationRule
 
-from user import User
-from refresh_token import RefreshToken
+from .user import User
+from .refresh_token import RefreshToken

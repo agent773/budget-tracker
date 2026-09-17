@@ -1,0 +1,10 @@
+/* Light/dark mode CSS variables (Phase 2 dark mode toggle reads/writes a class on <body>).
+
+PSEUDOCODE:
+
+:root { --bg: #ffffff; --fg: #111111; --accent: ...; }
+body.dark { --bg: #111111; --fg: #eeeeee; --accent: ...; }
+
+Mobile-responsive base rules: fluid widths, breakpoints for phone vs laptop layout,
+since this app is used from both.
+*/

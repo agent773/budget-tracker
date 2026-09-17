@@ -36,9 +36,6 @@ Thumbs.db
 # real, DELETE its line below so git starts tracking it (don't just leave it
 # ignored, or your finished work silently won't get committed).
 backend/alembic.ini
-backend/app/main.py
-backend/app/dependencies.py
-backend/app/models/__init__.py
 backend/app/models/account.py
 backend/app/models/plaid_item.py
 backend/app/models/transaction.py
@@ -47,7 +44,6 @@ backend/app/models/budget.py
 backend/app/models/manual_entry.py
 backend/app/models/holding.py
 backend/app/models/categorization_rule.py
-backend/app/schemas/auth_schema.py
 backend/app/schemas/plaid_schema.py
 backend/app/schemas/account_schema.py
 backend/app/schemas/transaction_schema.py
@@ -84,11 +80,6 @@ backend/tests/test_budgets.py
 backend/tests/test_encryption.py
 backend/tests/test_csv_import.py
 certs/gen_cert.sh
-frontend/vite.config.ts
-frontend/index.html
-frontend/src/main.tsx
-frontend/src/App.tsx
-frontend/src/theme.css
 frontend/src/api/client.ts
 frontend/src/api/authApi.ts
 frontend/src/api/plaidApi.ts

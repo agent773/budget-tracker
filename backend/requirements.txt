@@ -13,3 +13,4 @@ python-multipart
 pytest
 httpx
 pydantic
+email-validator

@@ -11,10 +11,10 @@ engine = create_engine(settings.DATABASE_URL, connect_args={"check_same_thread":
 
 @event.listens_for(engine, "connect")
 def _set_sqlite_pragma(dbapi_connection, connection_record):
-    # WAL mode lets reads and writes overlap instead of locking the whole file --
-    # avoids "database is locked" errors when the sync job and a request collide.
+
     cursor = dbapi_connection.cursor()
-    cursor.execute("PRAGMA journal_mode=WAL")
+    cursor.execute("PRAGMA journal_mode=WAL")ja
+    cursor.execute("PRAGMA foreign_keys=ON")
     cursor.close()
 
 

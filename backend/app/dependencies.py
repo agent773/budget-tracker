@@ -10,6 +10,7 @@ from fastapi.security import HTTPBearer,HTTPAuthorizationCredentials
 from typing import Annotated
 from app.security.jwt_handler import decode
 from app.models.user import User
+from app.config import Settings
 from sqlalchemy.orm import Session
 from app.database import get_db
 import time
@@ -33,8 +34,8 @@ request_counts = {}
 async def rate_limit_login(request:Request):
     client_ip = request.client.host
     now = time.time()
-    window = 60  # seconds
-    max_requests = 10
+    window = Settings.RATE_LIMIT_WINDOW_MINUTES  # seconds
+    max_requests = Settings.RATE_LIMIT_LOGIN_ATTEMPTS
     
     timestamps = request_counts.get(client_ip, [])
     timestamps = [t for t in timestamps if now - t < window]

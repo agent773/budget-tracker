@@ -38,7 +38,6 @@ Thumbs.db
 backend/app/models/plaid_item.py
 backend/app/models/transaction.py
 backend/app/models/category.py
-backend/app/models/budget.py
 backend/app/models/manual_entry.py
 backend/app/models/holding.py
 backend/app/models/categorization_rule.py

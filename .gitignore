@@ -40,7 +40,6 @@ backend/app/models/transaction.py
 backend/app/models/category.py
 backend/app/models/manual_entry.py
 backend/app/models/holding.py
-backend/app/models/categorization_rule.py
 backend/app/schemas/plaid_schema.py
 backend/app/schemas/account_schema.py
 backend/app/schemas/transaction_schema.py
